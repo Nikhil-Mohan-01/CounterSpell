@@ -1,20 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Sprites;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject Cube; 
-    public Vector3 spawnPosition = new Vector3(0, 0, 0); 
+    public GameObject Cube;
+    private GameObject door;
+    private bool isNearWindow;
+    public Vector3 spawnPosition; 
     public int boards = 0;
+
+    void Start()
+    {
+        spawnPosition = transform.position;    
+    }
 
 
     void Update()
     {
         
-        if (boards >= 0 && boards < 3 && (Input.GetKeyDown(KeyCode.E)))
+        if (boards >= 0 && boards < 3 && (Input.GetKeyDown(KeyCode.E)) && isNearWindow)
         {
             SpawnBoardObject();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.CompareTag("Player"))
+        {
+            isNearWindow = true;
         }
     }
 
