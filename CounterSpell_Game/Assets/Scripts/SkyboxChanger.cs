@@ -8,7 +8,7 @@ public class SkyboxChanger : MonoBehaviour
     private bool isDay = true;
     private bool hasSwitchedToNight = false; // Tracks if it has switched to night
 
-    private float changeInterval = 30f; // Change interval (day/night cycle)
+    private float changeInterval = 60f; // Change interval (day/night cycle)
     private float timer = 0f;
 
     public GameObject key; // Reference to the key GameObject
